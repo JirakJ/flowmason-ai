@@ -3,6 +3,8 @@ import { absoluteUrl } from "@/lib/site";
 
 const routes = ["", "/services", "/pricing", "/case-studies", "/contact", "/privacy", "/terms"];
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: absoluteUrl(route || "/"),

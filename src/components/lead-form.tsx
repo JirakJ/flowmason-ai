@@ -1,12 +1,11 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { siteConfig } from "@/lib/site";
 
 type SubmissionState =
   | { status: "idle"; message: "" }
-  | { status: "loading"; message: "Sending..." }
-  | { status: "success"; message: string }
-  | { status: "error"; message: string };
+  | { status: "success"; message: string };
 
 export function LeadForm() {
   const [state, setState] = useState<SubmissionState>({ status: "idle", message: "" });
@@ -15,32 +14,35 @@ export function LeadForm() {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
-    setState({ status: "loading", message: "Sending..." });
 
-    const response = await fetch("/api/lead", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(Object.fromEntries(formData.entries())),
-    });
-
-    const result = (await response.json()) as { message?: string };
-
-    if (!response.ok) {
-      setState({
-        status: "error",
-        message:
-          result.message ??
-          "The lead endpoint is not available. Please email hello@streamforge.ai directly.",
-      });
+    if (formData.get("website")) {
+      setState({ status: "success", message: "Request received." });
       return;
     }
 
-    form.reset();
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const company = String(formData.get("company") ?? "").trim();
+    const budget = String(formData.get("budget") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+    const subject = `AI Delivery Audit request from ${company}`;
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Company: ${company}`,
+      `Budget range: ${budget}`,
+      "",
+      "Project context:",
+      message,
+    ].join("\n");
+
+    window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+
     setState({
       status: "success",
-      message:
-        result.message ??
-        "Thanks. Your request was received and will be reviewed for fit before a call is scheduled.",
+      message: `Your email client should open now. If it does not, email ${siteConfig.email} directly.`,
     });
   }
 
@@ -116,19 +118,13 @@ export function LeadForm() {
 
       <button
         type="submit"
-        disabled={state.status === "loading"}
         className="mt-6 w-full rounded-full bg-cyan-300 px-6 py-4 text-sm font-bold text-slate-950 transition hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {state.status === "loading" ? "Sending..." : "Request audit review"}
+        Request audit review
       </button>
 
       {state.message ? (
-        <p
-          className={`mt-4 text-sm ${
-            state.status === "error" ? "text-rose-300" : "text-cyan-100"
-          }`}
-          role="status"
-        >
+        <p className="mt-4 text-sm text-cyan-100" role="status">
           {state.message}
         </p>
       ) : null}

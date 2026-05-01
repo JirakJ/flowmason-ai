@@ -14,8 +14,8 @@ StreamForge AI is a premium B2B consulting website for AI Delivery Stream implem
 ## Engineering standards
 
 - Use Next.js App Router, TypeScript, React Server Components by default, and Tailwind CSS.
-- Keep pages production-ready for Vercel: no hard-coded secrets, no local-only dependencies, and clear environment variable names.
-- Prefer static rendering for marketing pages. Use API routes only for server-side integrations such as lead capture.
+- Keep pages production-ready for GitHub Pages and Vercel: no hard-coded secrets, no local-only dependencies, and clear environment variable names.
+- Prefer static rendering for marketing pages. GitHub Pages deployments must not depend on server-side API routes.
 - Keep accessibility strong: semantic headings, descriptive links, focus states, sufficient contrast, and usable forms.
 - Keep SEO metadata current when adding or changing public pages.
 - Validate changes with `npm run check` before release-level work.
@@ -31,6 +31,6 @@ StreamForge AI is a premium B2B consulting website for AI Delivery Stream implem
 ## Security and operations
 
 - Never commit secrets or real customer data.
-- Lead capture integrations must fail explicitly when not configured.
+- Lead capture must work on static hosting through a clear email fallback unless a server-side deployment target is intentionally restored.
 - Do not add analytics, tracking pixels, or third-party scripts without documenting the privacy impact.
-- Preserve the Vercel deployment path and environment-variable based configuration.
+- Preserve the GitHub Pages deployment path and environment-variable based configuration.

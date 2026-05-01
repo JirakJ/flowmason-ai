@@ -7,7 +7,7 @@ Production-ready Next.js website for StreamForge AI, a premium AI Delivery Strea
 - Next.js App Router
 - TypeScript
 - Tailwind CSS
-- Vercel deployment target
+- GitHub Pages static deployment
 
 ## Local development
 
@@ -30,10 +30,19 @@ npm run check
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | No | Canonical production URL. Defaults to `https://streamforge.ai`. |
-| `CONTACT_WEBHOOK_URL` | For lead form delivery | Webhook endpoint that receives qualified lead submissions from `/api/lead`. |
+| `GITHUB_PAGES` | In GitHub Actions | Set to `true` to build with the `/streamforge-ai` base path. |
 
-If `CONTACT_WEBHOOK_URL` is not configured, the form returns a clear configuration message and directs prospects to email `hello@streamforge.ai`.
+The contact form is static-hosting compatible and opens a prefilled email to `hello@streamforge.ai`.
 
 ## Deployment
 
-Deploy on Vercel as a standard Next.js project. Set `NEXT_PUBLIC_SITE_URL` to the production domain and configure `CONTACT_WEBHOOK_URL` before using the lead form in production.
+The repository includes `.github/workflows/deploy-pages.yml`, which builds a static Next.js export and deploys `out/` to GitHub Pages.
+
+For GitHub Pages project hosting, the workflow sets:
+
+```bash
+GITHUB_PAGES=true
+NEXT_PUBLIC_SITE_URL=https://jirakj.github.io/streamforge-ai
+```
+
+The production URL is `https://jirakj.github.io/streamforge-ai/`.
