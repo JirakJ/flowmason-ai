@@ -2,33 +2,33 @@ import Link from "next/link";
 
 export function CtaBand() {
   return (
-    <section className="bg-slate-950 px-5 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto overflow-hidden rounded-[2rem] border border-cyan-300/20 bg-gradient-to-br from-cyan-300/15 via-slate-900 to-violet-500/10 p-8 shadow-2xl shadow-cyan-950/30 sm:p-12 lg:max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-[1.4fr_0.6fr] lg:items-center">
+    <section className="bg-[#f5f0e6] px-5 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto border-y border-stone-950 py-10 lg:max-w-7xl">
+        <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.24em] text-cyan-200">
-              Serious delivery work
+            <p className="text-sm font-bold uppercase tracking-[0.24em] text-stone-500">
+              Start small, but start with the real problem
             </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Bring one messy workflow. Leave with a decision-ready plan.
+            <h2 className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl">
+              Bring the workflow that wastes time every week.
             </h2>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
-              The audit is not a brainstorm. It is a paid working engagement that maps the current flow,
-              identifies the highest-value intervention, and makes the next build obvious enough to approve or reject.
+            <p className="mt-5 max-w-3xl text-lg leading-8 text-stone-700">
+              The audit turns it into a map, a build recommendation, a risk list and a plain answer:
+              automate it, prototype it, document it, or leave it alone.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
             <Link
               href="/contact"
-              className="rounded-full bg-cyan-300 px-6 py-4 text-center text-sm font-bold text-slate-950 transition hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-slate-950"
+              className="border border-stone-950 bg-stone-950 px-6 py-4 text-center text-sm font-bold text-stone-50 transition hover:bg-stone-800 focus:outline-none focus:ring-2 focus:ring-stone-950 focus:ring-offset-2 focus:ring-offset-[#f5f0e6]"
             >
-              Start with the audit
+              Request the audit
             </Link>
             <Link
               href="/pricing"
-              className="rounded-full border border-white/15 px-6 py-4 text-center text-sm font-bold text-white transition hover:border-white/30 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-slate-950"
+              className="border border-stone-400 px-6 py-4 text-center text-sm font-bold text-stone-950 transition hover:border-stone-950 hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-stone-950 focus:ring-offset-2 focus:ring-offset-[#f5f0e6]"
             >
-              See pricing and fit
+              Check pricing
             </Link>
           </div>
         </div>

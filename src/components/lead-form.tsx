@@ -25,7 +25,7 @@ export function LeadForm() {
     const company = String(formData.get("company") ?? "").trim();
     const budget = String(formData.get("budget") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
-    const subject = `AI Delivery Audit request from ${company}`;
+    const subject = `FlowMason audit request from ${company}`;
     const body = [
       `Name: ${name}`,
       `Email: ${email}`,
@@ -47,45 +47,45 @@ export function LeadForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-slate-950/40 sm:p-8">
+    <form onSubmit={handleSubmit} className="border border-stone-950 bg-[#fffaf0] p-6 sm:p-8">
       <div className="grid gap-5 sm:grid-cols-2">
-        <label className="text-sm font-medium text-slate-200">
+        <label className="text-sm font-medium text-stone-800">
           Name
           <input
             required
             name="name"
             autoComplete="name"
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300"
+            className="mt-2 w-full border border-stone-300 bg-[#f5f0e6] px-4 py-3 text-stone-950 outline-none transition placeholder:text-stone-400 focus:border-stone-950"
             placeholder="Your name"
           />
         </label>
-        <label className="text-sm font-medium text-slate-200">
+        <label className="text-sm font-medium text-stone-800">
           Work email
           <input
             required
             type="email"
             name="email"
             autoComplete="email"
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300"
+            className="mt-2 w-full border border-stone-300 bg-[#f5f0e6] px-4 py-3 text-stone-950 outline-none transition placeholder:text-stone-400 focus:border-stone-950"
             placeholder="you@company.com"
           />
         </label>
-        <label className="text-sm font-medium text-slate-200">
+        <label className="text-sm font-medium text-stone-800">
           Company
           <input
             required
             name="company"
             autoComplete="organization"
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300"
+            className="mt-2 w-full border border-stone-300 bg-[#f5f0e6] px-4 py-3 text-stone-950 outline-none transition placeholder:text-stone-400 focus:border-stone-950"
             placeholder="Company name"
           />
         </label>
-        <label className="text-sm font-medium text-slate-200">
+        <label className="text-sm font-medium text-stone-800">
           Budget range
           <select
             required
             name="budget"
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-cyan-300"
+            className="mt-2 w-full border border-stone-300 bg-[#f5f0e6] px-4 py-3 text-stone-950 outline-none transition focus:border-stone-950"
             defaultValue=""
           >
             <option value="" disabled>
@@ -99,15 +99,15 @@ export function LeadForm() {
         </label>
       </div>
 
-      <label className="mt-5 block text-sm font-medium text-slate-200">
-        What should the AI Delivery Stream improve?
+      <label className="mt-5 block text-sm font-medium text-stone-800">
+        What workflow should we inspect?
         <textarea
           required
           name="message"
           rows={6}
           minLength={40}
-          className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300"
-          placeholder="Describe your current delivery process, AI usage, product idea, workflow, agent need, or implementation challenge."
+          className="mt-2 w-full border border-stone-300 bg-[#f5f0e6] px-4 py-3 text-stone-950 outline-none transition placeholder:text-stone-400 focus:border-stone-950"
+          placeholder="Describe the current flow, who owns it, where time is lost, and what a useful outcome would look like."
         />
       </label>
 
@@ -118,13 +118,13 @@ export function LeadForm() {
 
       <button
         type="submit"
-        className="mt-6 w-full rounded-full bg-cyan-300 px-6 py-4 text-sm font-bold text-slate-950 transition hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-6 w-full border border-stone-950 bg-stone-950 px-6 py-4 text-sm font-bold text-stone-50 transition hover:bg-stone-800 focus:outline-none focus:ring-2 focus:ring-stone-950 focus:ring-offset-2 focus:ring-offset-[#fffaf0]"
       >
-        Request audit review
+        Send workflow for review
       </button>
 
       {state.message ? (
-        <p className="mt-4 text-sm text-cyan-100" role="status">
+        <p className="mt-4 text-sm text-stone-700" role="status">
           {state.message}
         </p>
       ) : null}

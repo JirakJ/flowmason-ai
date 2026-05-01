@@ -7,11 +7,11 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <section className="bg-slate-950 px-5 py-20 sm:px-6 lg:px-8 lg:py-28">
+    <section className="bg-[#f5f0e6] px-5 py-20 sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto max-w-3xl">
-        <p className="text-sm font-bold uppercase tracking-[0.24em] text-cyan-300">Terms</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white">Website Terms</h1>
-        <div className="mt-8 space-y-6 leading-8 text-slate-300">
+        <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-stone-500">Terms</p>
+        <h1 className="mt-4 text-5xl font-semibold tracking-[-0.04em] text-stone-950">Website Terms</h1>
+        <div className="mt-8 space-y-6 leading-8 text-stone-700">
           <p>
             The information on this website is provided for general business evaluation. It does not
             create a client relationship, implementation commitment or guarantee of specific results.
