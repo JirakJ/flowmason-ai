@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CtaBand } from "@/components/cta-band";
 import { SectionHeading } from "@/components/section-heading";
-import { caseStudies, faqs, processSteps, services } from "@/lib/content";
+import { caseStudies, faqs, humanPrinciples, nameMeaning, processSteps, services } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -13,35 +13,35 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <p className="inline-flex rounded-full border border-cyan-300/25 bg-cyan-300/10 px-4 py-2 text-sm font-semibold text-cyan-100">
-              AI-powered prototyping, development, testing, documentation and custom agents
+              For teams that need working delivery systems, not AI theatre
             </p>
             <h1 className="mt-8 max-w-5xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
-              Build software faster with an AI Delivery Stream.
+              Turn messy product work into a flow your team can trust.
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-              FlowMason AI helps startups, software companies and mid-sized businesses turn
-              ideas into documented, tested and production-ready software through structured
-              AI delivery systems.
+              FlowMason AI works with founders, software teams and agencies to turn vague ideas,
+              scattered AI use and manual workflows into documented prototypes, custom agents and
+              delivery routines that survive contact with real work.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contact"
                 className="rounded-full bg-cyan-300 px-7 py-4 text-center text-sm font-bold text-slate-950 transition hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-slate-950"
               >
-                Book an AI Delivery Audit
+                Start with a paid audit
               </Link>
               <Link
                 href="/services"
                 className="rounded-full border border-white/15 px-7 py-4 text-center text-sm font-bold text-white transition hover:border-white/30 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-slate-950"
               >
-                View services
+                See what gets built
               </Link>
             </div>
             <dl className="mt-12 grid gap-5 sm:grid-cols-3">
               {[
-                ["4", "maximum active client companies per month"],
-                ["3k+", "entry audit investment"],
-                ["60k+", "full implementation engagements"],
+                ["4", "active client companies maximum"],
+                ["5-7", "business days to the first delivery map"],
+                ["3k", "EUR starting point, not a free discovery call"],
               ].map(([value, label]) => (
                 <div key={label} className="rounded-3xl border border-white/10 bg-white/[0.04] p-5">
                   <dt className="text-3xl font-semibold text-white">{value}</dt>
@@ -53,20 +53,23 @@ export default function Home() {
 
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-cyan-950/20 backdrop-blur">
             <div className="rounded-[1.5rem] bg-slate-950/80 p-6">
-              <p className="text-sm font-bold uppercase tracking-[0.24em] text-cyan-300">
-                Delivery stream
-              </p>
+              <p className="text-sm font-bold uppercase tracking-[0.24em] text-cyan-300">What the name means</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white">{nameMeaning.title}</h2>
+              <p className="mt-4 leading-7 text-slate-300">{nameMeaning.body}</p>
               <div className="mt-6 grid gap-3">
-                {["Idea", "Context", "Specification", "Prototype", "Development", "Testing", "Documentation", "Deployment", "Handoff"].map(
-                  (item, index) => (
-                    <div key={item} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                      <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-cyan-300/10 text-xs font-bold text-cyan-200">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <span className="font-medium text-white">{item}</span>
-                    </div>
-                  ),
-                )}
+                {[
+                  "messy product flow",
+                  "human decisions",
+                  "AI-assisted build",
+                  "tested handoff",
+                ].map((item, index) => (
+                  <div key={item} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-cyan-300/10 text-xs font-bold text-cyan-200">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-medium text-white">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -76,16 +79,16 @@ export default function Home() {
       <section className="bg-slate-950 px-5 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="Problem"
-            title="Most companies are using AI incorrectly."
-            body="Developers use AI in private chats. Founders generate product ideas but cannot turn them into structured execution. Prototypes are created quickly but rarely become production-ready. Documentation is incomplete. Testing comes too late. The missing system around AI is the problem."
+            eyebrow="The real problem"
+            title="AI is not the bottleneck. Unclear delivery is."
+            body="Most teams already have access to capable tools. What they do not have is a reliable path from business context to specification, prototype, implementation, validation and handoff. That is where money, time and trust leak out."
           />
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {[
-              "Prompts live in private chats",
-              "Generated code lacks architecture",
-              "Testing and validation arrive late",
-              "Custom agents are discussed but not operated",
+              "The founder idea is not specific enough to build",
+              "AI outputs are useful but nobody owns the workflow",
+              "The prototype looks good but cannot be handed to engineering",
+              "Documentation describes yesterday's system, not today's decisions",
             ].map((problem) => (
               <div key={problem} className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 text-slate-200">
                 {problem}
@@ -98,9 +101,9 @@ export default function Home() {
       <section className="bg-slate-900/60 px-5 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="Solution"
-            title="The AI Delivery Stream turns scattered AI usage into a controlled delivery pipeline."
-            body="The result is not another AI experiment. The result is a repeatable system for context, specifications, prototypes, development, testing, documentation, deployment and continuous improvement."
+            eyebrow="How the work moves"
+            title="A practical delivery stream, built one valuable workflow at a time."
+            body="The first goal is not to automate everything. It is to make one important flow clear enough, tested enough and documented enough that your team can trust it."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {processSteps.map((step, index) => (
@@ -119,8 +122,8 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <SectionHeading
               eyebrow="Services"
-              title="Premium, productized engagements for serious delivery work."
-              body="Transparent pricing keeps the conversation focused on fit, scope and strategic value."
+              title="Clear offers. Serious scope. No vague AI transformation theatre."
+              body="Each engagement has a defined outcome: a map, a prototype, an agent, a delivery workflow or an ongoing delivery partnership."
             />
             <Link href="/services" className="text-sm font-bold text-cyan-200 transition hover:text-cyan-100">
               Explore all services →
@@ -141,10 +144,33 @@ export default function Home() {
 
       <section className="bg-slate-900/60 px-5 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <SectionHeading
+              eyebrow="Human aspect"
+              title="The human work is deciding what should happen, what must never happen, and who owns the result."
+              body="AI can accelerate drafting, research and implementation. It cannot replace business judgment, taste, prioritization, accountability or the uncomfortable work of saying no."
+            />
+            <div className="grid gap-5 sm:grid-cols-2">
+              {humanPrinciples.map((principle) => (
+                <article key={principle.title} className="rounded-3xl border border-white/10 bg-slate-950 p-6">
+                  <h3 className="text-xl font-semibold text-white">{principle.title}</h3>
+                  <p className="mt-3 leading-7 text-slate-400">{principle.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+          <Link href="/human-aspect" className="mt-8 inline-flex text-sm font-bold text-cyan-200 transition hover:text-cyan-100">
+            Read the human aspect →
+          </Link>
+        </div>
+      </section>
+
+      <section className="bg-slate-950 px-5 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="Case-study formats"
-            title="Initial proof can be built through internal and demo-based case studies."
-            body="The website does not invent client results. It shows the kinds of deliverables serious buyers can evaluate before a call."
+            eyebrow="Proof formats"
+            title="No fake logos. No imaginary ROI. Just inspectable delivery assets."
+            body="Until client stories can be published, the proof is in demo-based artifacts a serious buyer can evaluate: briefs, workflows, prototypes, agent specs, test checklists and handoff notes."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {caseStudies.map((study) => (
@@ -158,12 +184,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-950 px-5 py-20 sm:px-6 lg:px-8">
+      <section className="bg-slate-900/60 px-5 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Philosophy"
-            title="Preparation over constant correction."
-            body="Human-in-the-loop is not the default operating model. If the system is prepared correctly, AI can operate inside clear context, constraints, architectural rules, documentation standards, validation gates and fallback paths."
+            title="Preparation beats supervision theatre."
+            body="Putting a human checkpoint after every AI action is not a strategy. The better work is designing context, constraints, review rules and fallback paths before the system starts producing output."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {["Strong context", "Clear constraints", "Testing workflows", "Auditability"].map((item) => (

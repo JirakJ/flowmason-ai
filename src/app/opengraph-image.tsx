@@ -31,7 +31,7 @@ export default function Image() {
             Build software faster with an AI Delivery Stream.
           </div>
           <div style={{ color: "#cbd5e1", fontSize: 30, lineHeight: 1.35, marginTop: 34, maxWidth: 940 }}>
-            AI-powered prototyping, development, testing, documentation and custom agents.
+            Messy product work shaped into reliable AI-assisted delivery flows.
           </div>
         </div>
       </div>
