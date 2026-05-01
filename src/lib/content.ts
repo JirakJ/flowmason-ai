@@ -240,7 +240,7 @@ export const faqs = [
   {
     question: "Do you replace our developers?",
     answer:
-      "No. StreamForge AI builds systems that help your team move faster with better context, constraints, documentation and validation.",
+      "No. FlowMason AI builds systems that help your team move faster with better context, constraints, documentation and validation.",
   },
   {
     question: "Do you build custom AI agents?",
@@ -304,7 +304,7 @@ export const partnerTiers = [
   {
     name: "Strategic Partner",
     price: "40,000 EUR/month",
-    fit: "Companies that want StreamForge AI as an external AI delivery partner.",
+    fit: "Companies that want FlowMason AI as an external AI delivery partner.",
     includes: [
       "Priority capacity",
       "Up to 8 active workflows per month",

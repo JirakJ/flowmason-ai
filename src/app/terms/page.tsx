@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms",
-  description: "Website terms for StreamForge AI.",
+  description: "Website terms for FlowMason AI.",
 };
 
 export default function TermsPage() {
@@ -22,11 +22,11 @@ export default function TermsPage() {
             agreement.
           </p>
           <p>
-            StreamForge AI may decline projects that are outside its expertise, capacity, ethical
+            FlowMason AI may decline projects that are outside its expertise, capacity, ethical
             standards or security requirements.
           </p>
           <p>
-            All website content, positioning and service descriptions are owned by StreamForge AI unless
+            All website content, positioning and service descriptions are owned by FlowMason AI unless
             otherwise stated.
           </p>
         </div>

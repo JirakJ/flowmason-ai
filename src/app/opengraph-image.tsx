@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "StreamForge AI - Build software faster with an AI Delivery Stream";
+export const alt = "FlowMason AI - Build software faster with an AI Delivery Stream";
 export const size = {
   width: 1200,
   height: 630,
@@ -25,7 +25,7 @@ export default function Image() {
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ color: "#67e8f9", fontSize: 32, fontWeight: 800, letterSpacing: 6 }}>
-            STREAMFORGE AI
+            FLOWMASON AI
           </div>
           <div style={{ fontSize: 78, fontWeight: 800, letterSpacing: -4, lineHeight: 1.02, marginTop: 34, maxWidth: 980 }}>
             Build software faster with an AI Delivery Stream.

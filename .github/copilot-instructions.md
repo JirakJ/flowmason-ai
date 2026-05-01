@@ -1,6 +1,6 @@
-# Copilot instructions for StreamForge AI
+# Copilot instructions for FlowMason AI
 
-StreamForge AI is a premium B2B consulting website for AI Delivery Stream implementation. Every change should protect the positioning: structured AI delivery systems for serious startups, software companies, agencies, SaaS teams, and mid-sized businesses.
+FlowMason AI is a premium B2B consulting website for AI Delivery Stream implementation. Every change should protect the positioning: structured AI delivery systems for serious startups, software companies, agencies, SaaS teams, and mid-sized businesses.
 
 ## Product and business context
 

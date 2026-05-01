@@ -11,12 +11,12 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/85 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex items-center gap-3" aria-label="StreamForge AI home">
+        <Link href="/" className="group flex items-center gap-3" aria-label="FlowMason AI home">
           <span className="flex size-10 items-center justify-center rounded-2xl border border-cyan-300/40 bg-cyan-300/10 text-sm font-black text-cyan-200 shadow-[0_0_35px_rgba(34,211,238,0.22)]">
-            SF
+            FM
           </span>
           <span className="text-base font-semibold tracking-tight text-white">
-            StreamForge <span className="text-cyan-200">AI</span>
+            FlowMason <span className="text-cyan-200">AI</span>
           </span>
         </Link>
 

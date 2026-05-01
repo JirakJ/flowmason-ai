@@ -6,7 +6,7 @@ import { caseStudies } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "Demo-based StreamForge AI case-study formats for prototypes, custom AI agents, documentation pipelines and full AI delivery workflows.",
+    "Demo-based FlowMason AI case-study formats for prototypes, custom AI agents, documentation pipelines and full AI delivery workflows.",
 };
 
 export default function CaseStudiesPage() {
@@ -17,7 +17,7 @@ export default function CaseStudiesPage() {
           <SectionHeading
             eyebrow="Case studies"
             title="Proof formats without fake client claims."
-            body="Before public client stories exist, StreamForge AI uses internal and demo-based case studies to show how delivery systems are structured, documented and validated."
+            body="Before public client stories exist, FlowMason AI uses internal and demo-based case studies to show how delivery systems are structured, documented and validated."
           />
         </div>
       </section>

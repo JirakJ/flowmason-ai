@@ -1,6 +1,6 @@
-# StreamForge AI
+# FlowMason AI
 
-Production-ready Next.js website for StreamForge AI, a premium AI Delivery Stream consulting business.
+Production-ready Next.js website for FlowMason AI, a premium AI Delivery Stream consulting business.
 
 ## Stack
 
@@ -29,10 +29,10 @@ npm run check
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | No | Canonical production URL. Defaults to `https://streamforge.ai`. |
-| `GITHUB_PAGES` | In GitHub Actions | Set to `true` to build with the `/streamforge-ai` base path. |
+| `NEXT_PUBLIC_SITE_URL` | No | Canonical production URL. Defaults to `https://flowmason.ai`. |
+| `GITHUB_PAGES` | In GitHub Actions | Set to `true` to build with the `/flowmason-ai` base path. |
 
-The contact form is static-hosting compatible and opens a prefilled email to `hello@streamforge.ai`.
+The contact form is static-hosting compatible and opens a prefilled email to `hello@flowmason.ai`.
 
 ## Deployment
 
@@ -42,7 +42,7 @@ For GitHub Pages project hosting, the workflow sets:
 
 ```bash
 GITHUB_PAGES=true
-NEXT_PUBLIC_SITE_URL=https://jirakj.github.io/streamforge-ai
+NEXT_PUBLIC_SITE_URL=https://jirakj.github.io/flowmason-ai
 ```
 
-The production URL is `https://jirakj.github.io/streamforge-ai/`.
+The production URL is `https://jirakj.github.io/flowmason-ai/`.

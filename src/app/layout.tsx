@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "StreamForge AI | AI Delivery Stream Consulting",
-    template: "%s | StreamForge AI",
+    default: "FlowMason AI | AI Delivery Stream Consulting",
+    template: "%s | FlowMason AI",
   },
   description: siteConfig.description,
   keywords: [
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     "custom AI agents",
     "AI documentation pipeline",
   ],
-  authors: [{ name: "StreamForge AI" }],
-  creator: "StreamForge AI",
+  authors: [{ name: "FlowMason AI" }],
+  creator: "FlowMason AI",
   alternates: {
     canonical: absoluteUrl("/"),
   },
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     type: "website",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "StreamForge AI | AI Delivery Stream Consulting",
+    title: "FlowMason AI | AI Delivery Stream Consulting",
     description: siteConfig.description,
     images: [{ url: absoluteUrl("/opengraph-image"), width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "StreamForge AI | AI Delivery Stream Consulting",
+    title: "FlowMason AI | AI Delivery Stream Consulting",
     description: siteConfig.description,
     images: [absoluteUrl("/opengraph-image")],
   },

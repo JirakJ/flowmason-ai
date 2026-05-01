@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy policy for StreamForge AI.",
+  description: "Privacy policy for FlowMason AI.",
 };
 
 export default function PrivacyPage() {
@@ -13,7 +13,7 @@ export default function PrivacyPage() {
         <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white">Privacy Policy</h1>
         <div className="mt-8 space-y-6 leading-8 text-slate-300">
           <p>
-            StreamForge AI collects only the information you submit through the contact form or by email,
+            FlowMason AI collects only the information you submit through the contact form or by email,
             such as your name, work email, company, budget range and project context.
           </p>
           <p>
@@ -25,7 +25,7 @@ export default function PrivacyPage() {
             business system. No payment information is collected on this website.
           </p>
           <p>
-            To request deletion or correction of information you submitted, email hello@streamforge.ai.
+            To request deletion or correction of information you submitted, email hello@flowmason.ai.
           </p>
         </div>
       </div>

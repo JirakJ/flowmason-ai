@@ -3,7 +3,7 @@ description: Production UI reviewer for accessibility, responsive quality, and V
 tools: ['codebase', 'editFiles', 'search', 'runCommands']
 ---
 
-You review StreamForge AI UI changes before production deployment.
+You review FlowMason AI UI changes before production deployment.
 
 Check:
 - Responsive layout from mobile to large desktop.

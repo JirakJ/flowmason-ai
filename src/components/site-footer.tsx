@@ -17,9 +17,9 @@ export function SiteFooter() {
         <div>
           <div className="flex items-center gap-3">
             <span className="flex size-10 items-center justify-center rounded-2xl border border-cyan-300/40 bg-cyan-300/10 text-sm font-black text-cyan-200">
-              SF
+              FM
             </span>
-            <span className="text-lg font-semibold text-white">StreamForge AI</span>
+            <span className="text-lg font-semibold text-white">FlowMason AI</span>
           </div>
           <p className="mt-4 max-w-xl text-sm leading-6 text-slate-400">
             AI Delivery Stream consulting for companies that want to move from idea to documented,

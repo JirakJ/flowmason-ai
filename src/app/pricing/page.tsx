@@ -6,7 +6,7 @@ import { partnerTiers, services } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Transparent pricing for StreamForge AI audits, prototype sprints, custom AI agents, full AI Delivery Stream implementations and monthly retainers.",
+    "Transparent pricing for FlowMason AI audits, prototype sprints, custom AI agents, full AI Delivery Stream implementations and monthly retainers.",
 };
 
 export default function PricingPage() {
@@ -17,7 +17,7 @@ export default function PricingPage() {
           <SectionHeading
             eyebrow="Pricing"
             title="Transparent pricing for companies ready to invest in delivery infrastructure."
-            body="StreamForge AI does not sell low-ticket experiments. Engagements are scoped for implementation quality, documented handoff and measurable delivery leverage."
+            body="FlowMason AI does not sell low-ticket experiments. Engagements are scoped for implementation quality, documented handoff and measurable delivery leverage."
           />
           <div className="mt-10 rounded-[2rem] border border-cyan-300/20 bg-cyan-300/10 p-6 text-cyan-50">
             We work with a maximum of 4 active client companies per month to protect delivery quality.

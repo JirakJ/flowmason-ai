@@ -19,7 +19,7 @@ export default function Home() {
               Build software faster with an AI Delivery Stream.
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-              StreamForge AI helps startups, software companies and mid-sized businesses turn
+              FlowMason AI helps startups, software companies and mid-sized businesses turn
               ideas into documented, tested and production-ready software through structured
               AI delivery systems.
             </p>
