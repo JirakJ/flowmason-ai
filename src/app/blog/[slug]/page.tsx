@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   blogPosts,
+  buildArticleChecklist,
+  buildArticleIntro,
   buildArticleSections,
   getBlogPost,
   getBlogPostUrl,
@@ -56,6 +58,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const sections = buildArticleSections(post);
+  const intro = buildArticleIntro(post);
+  const checklist = buildArticleChecklist(post);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -109,11 +113,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </header>
 
         <div className="mt-12 space-y-12">
-          <p className="text-2xl leading-10 text-stone-800">
-            This note is for {post.audience}. The useful question is not which AI tool should be
-            used. The useful question is which workflow is painful enough, clear enough and owned
-            enough to improve.
-          </p>
+          <div className="space-y-5 text-2xl leading-10 text-stone-800">
+            {intro.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
 
           {sections.map((section) => (
             <section key={section.heading}>
@@ -126,13 +130,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           <section className="border-y border-stone-950 py-8">
             <h2 className="text-3xl font-semibold tracking-tight text-stone-950">
-              Practical checklist
+              Monday morning checklist
             </h2>
             <ul className="mt-6 space-y-4 text-lg leading-8 text-stone-700">
-              <li>• Who owns the workflow after the first version ships?</li>
-              <li>• What input quality does the workflow need to produce useful output?</li>
-              <li>• What should AI draft, and what should a human decide?</li>
-              <li>• What artifact will prove the work can be handed off?</li>
+              {checklist.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
             </ul>
           </section>
 

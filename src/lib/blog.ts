@@ -20,6 +20,11 @@ export type BlogPost = BlogSeed & {
   readingTime: string;
 };
 
+export type ArticleSection = {
+  heading: string;
+  body: string;
+};
+
 const seeds: BlogSeed[] = [
   {
     slug: "ai-delivery-audit-before-custom-agent",
@@ -1062,7 +1067,7 @@ export const blogPosts: BlogPost[] = seeds.map((seed, index) => ({
   ...seed,
   publishedAt: publishedAt(index),
   author: siteConfig.author,
-  readingTime: "5 min read",
+  readingTime: `${4 + (index % 3)} min read`,
 }));
 
 export function getBlogPost(slug: string) {
@@ -1073,33 +1078,254 @@ export function getBlogPostUrl(post: BlogPost) {
   return absoluteUrl(`/blog/${post.slug}`);
 }
 
-export function buildArticleSections(post: BlogPost) {
-  const isPastor = post.framework === "PASTOR";
+function postIndex(post: BlogPost) {
+  const index = blogPosts.findIndex((candidate) => candidate.slug === post.slug);
+  return index >= 0 ? index : 0;
+}
+
+function sentenceCase(value: string) {
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+const deskScenes = [
+  "I would start with a blank page, not a tool comparison.",
+  "The first useful move is to slow the room down for thirty minutes.",
+  "This is the kind of problem that looks technical until someone draws the workflow.",
+  "When a team brings this to me, I listen for ownership before I listen for tooling.",
+  "The expensive part is rarely the model. It is the missing agreement around the work.",
+  "I would rather see one honest workflow map than ten polished AI use-case slides.",
+  "The work becomes easier when somebody writes down what good output actually means.",
+  "Most of the value appears before the first integration is built.",
+];
+
+const warningLines = [
+  "If nobody can explain the current flow in plain language, automation will only make confusion faster.",
+  "If the buyer cannot name the reviewer, the project is not ready for autonomy.",
+  "If the output cannot be rejected, improved or handed off, it is not a delivery system yet.",
+  "If the only proof is a demo, I would treat the project as unfinished.",
+  "If the workflow depends on one expert's memory, start there before adding agents.",
+  "If the team argues about tooling before inputs and outputs, the meeting is already drifting.",
+];
+
+const mondayMoves = [
+  "Open a shared document and describe the current workflow as it happens today, including the ugly parts.",
+  "Collect three real examples: one good output, one bad output and one borderline case.",
+  "Name the person who will judge quality after launch, then ask what they need to see.",
+  "Write the non-goals. Most bad AI projects expand because nobody says what is out of scope.",
+  "Pick one painful step and define the input, output, owner and review rule.",
+  "Turn the next meeting into a decision log instead of another broad AI discussion.",
+  "List the sources the workflow is allowed to trust and the sources it should ignore.",
+  "Decide what a human must still approve even if the AI draft looks correct.",
+];
+
+const closingLines = [
+  "That is not glamorous work, but it is the work that makes the glamorous part usable.",
+  "This is where a small audit pays for itself: it prevents the team from building the wrong impressive thing.",
+  "A useful AI workflow should feel a little boring by the time it ships. Boring is often another word for operable.",
+  "The goal is not to remove the human. The goal is to stop wasting the human on avoidable mess.",
+  "The best sign is when the team can explain the workflow without mentioning the model first.",
+  "Good consulting here is not a pile of ideas. It is a smaller number of decisions made clearly.",
+];
+
+export function buildArticleIntro(post: BlogPost) {
+  const index = postIndex(post);
+  const scene = deskScenes[index % deskScenes.length];
+  const warning = warningLines[index % warningLines.length];
+  const variants = [
+    [
+      `${scene} ${sentenceCase(post.pain)}. That is the real buying signal.`,
+      `${warning} For ${post.audience}, the practical question is whether the workflow is ready to be made more reliable.`,
+    ],
+    [
+      `${sentenceCase(post.pain)}. I would treat that less as an AI opportunity and more as a workflow leak.`,
+      `${scene} The team does not need a bigger story yet. It needs a smaller decision that can survive contact with real work.`,
+    ],
+    [
+      `I do not read this as a tooling problem first. I read it as a sign that ${post.pain}.`,
+      `${warning} That is why the early work should be concrete enough that ${post.audience} can argue with it.`,
+    ],
+    [
+      `The moment to pay attention is not when somebody says "we should use AI." It is when ${post.pain}.`,
+      `${scene} From there, the work is to find the narrowest responsible improvement, not the loudest demo.`,
+    ],
+    [
+      `${scene} In plain language: ${post.pain}.`,
+      `That sentence is already more useful than most AI roadmaps because it points at ownership, review and handoff.`,
+    ],
+  ];
+
+  return variants[index % variants.length];
+}
+
+export function buildArticleChecklist(post: BlogPost) {
+  const index = postIndex(post);
+  const move = mondayMoves[index % mondayMoves.length];
 
   return [
-    {
-      heading: isPastor ? "The problem in the buyer's language" : "Attention: the visible symptom",
-      body: `${post.audience} usually do not wake up wanting an AI project. They notice that ${post.pain}. That is the useful starting point because it describes a business workflow, not a tool preference.`,
-    },
-    {
-      heading: isPastor ? "Why this keeps costing money" : "Interest: why the issue compounds",
-      body: `When this stays unresolved, every new prompt, prototype or agent inherits the same confusion. The work may look faster for a few days, but review load, rework and handoff risk increase because nobody has shaped the flow around a clear owner and quality bar.`,
-    },
-    {
-      heading: isPastor ? "The sharper outcome" : "Desire: what better looks like",
-      body: `${post.promise}. The goal is not to make AI sound impressive. The goal is to make the workflow easier to run, easier to inspect and easier to improve after the first version ships.`,
-    },
-    {
-      heading: "The operating move",
-      body: `The first practical move is simple: ${post.operatingMove}. This gives the team a concrete object to review before budget, tooling or implementation choices take over the conversation.`,
-    },
-    {
-      heading: "What should exist at the end",
-      body: `A useful engagement should produce a ${post.proofAsset}. If that artifact is missing, the work probably created activity rather than leverage.`,
-    },
-    {
-      heading: isPastor ? "Response: what to do next" : "Action: the next responsible step",
-      body: `Pick one workflow that matches this pattern and write down the current input, output, owner and review rule. If the team cannot agree on those four details, start with an audit before building anything.`,
-    },
+    move,
+    `Write down the artifact that would make the work reviewable: in this case, a ${post.proofAsset}.`,
+    `Decide who owns the next version if the first version works.`,
+    `Mark the part of the workflow where human judgment must stay visible.`,
   ];
+}
+
+export function buildArticleSections(post: BlogPost): ArticleSection[] {
+  const index = postIndex(post);
+  const closing = closingLines[index % closingLines.length];
+  const variants: ArticleSection[][] = [
+    [
+      {
+        heading: "The mistake I would avoid",
+        body: `I would not begin by asking for a bigger AI plan. I would begin by asking why ${post.pain}. Until that is understood, every tool choice is premature.`,
+      },
+      {
+        heading: "The useful version of the problem",
+        body: `${sentenceCase(post.promise)}. That is a much cleaner target than becoming AI-enabled in some abstract way.`,
+      },
+      {
+        heading: "What I would put on the table",
+        body: `I would put a ${post.proofAsset} on the table and make the team react to it. If people cannot agree on that artifact, they will not agree after the build either.`,
+      },
+      {
+        heading: "The small move",
+        body: `${sentenceCase(post.operatingMove)}. It sounds modest, but it creates a surface area for disagreement before money is spent.`,
+      },
+      {
+        heading: "Why it matters",
+        body: closing,
+      },
+    ],
+    [
+      {
+        heading: "The smell",
+        body: `The smell is not that the team lacks ambition. The smell is that ${post.pain}, and people keep trying to solve that with another tool or another call.`,
+      },
+      {
+        heading: "A better constraint",
+        body: `Constrain the work until it can be inspected. ${sentenceCase(post.operatingMove)}. Now the conversation is about a workflow, not about taste in AI platforms.`,
+      },
+      {
+        heading: "The thing I would ask for",
+        body: `Ask for a ${post.proofAsset}. Not because artifacts are paperwork, but because they reveal whether the work can survive handoff.`,
+      },
+      {
+        heading: "What good looks like",
+        body: `${sentenceCase(post.promise)}. Good output should make the next decision easier, not simply make the team feel busy.`,
+      },
+    ],
+    [
+      {
+        heading: "Where teams get fooled",
+        body: `Teams get fooled when the demo works and the operating model is still missing. In this topic, the trap is simple: ${post.pain}.`,
+      },
+      {
+        heading: "The human part",
+        body: `Somebody still has to decide what matters, what is risky and what should be rejected. AI can accelerate the middle of the workflow, but it cannot own the judgment around it.`,
+      },
+      {
+        heading: "The practical move",
+        body: `${sentenceCase(post.operatingMove)}. This is the kind of step that feels too small until it saves two weeks of rework.`,
+      },
+      {
+        heading: "The evidence",
+        body: `I would not call this done without a ${post.proofAsset}. That is the evidence that the team has something it can run again.`,
+      },
+      {
+        heading: "The payoff",
+        body: `${sentenceCase(post.promise)}. More importantly, the team learns how to repeat the pattern on the next workflow.`,
+      },
+    ],
+    [
+      {
+        heading: "The uncomfortable question",
+        body: `If this workflow disappeared for a week, who would notice first? That person is usually closer to the truth than the AI roadmap is.`,
+      },
+      {
+        heading: "The current failure mode",
+        body: `${sentenceCase(post.pain)}. That is operational debt. AI may make it more visible, but it will not clean it up by itself.`,
+      },
+      {
+        heading: "The intervention",
+        body: `${sentenceCase(post.operatingMove)}. Keep it narrow enough that the team can see whether it works within days, not quarters.`,
+      },
+      {
+        heading: "The artifact",
+        body: `The artifact I would want is a ${post.proofAsset}. Without that, the project depends too much on memory and confidence.`,
+      },
+    ],
+    [
+      {
+        heading: "What I would not buy",
+        body: `I would not buy another broad discovery deck for this. The useful starting point is smaller: ${post.pain}.`,
+      },
+      {
+        heading: "The first honest artifact",
+        body: `Produce a ${post.proofAsset} and let the team challenge it. The disagreement is valuable because it shows where the workflow is still vague.`,
+      },
+      {
+        heading: "The move",
+        body: `${sentenceCase(post.operatingMove)}. If that cannot be done cleanly, a build will not magically make it clean.`,
+      },
+      {
+        heading: "The commercial reason",
+        body: `${sentenceCase(post.promise)}. That is what a buyer can feel: fewer loose ends, fewer mystery handoffs and less dependence on heroic follow-up.`,
+      },
+    ],
+    [
+      {
+        heading: "A small field test",
+        body: `Take one recent example of this workflow and replay it from request to finished output. The weak point will usually match the complaint: ${post.pain}.`,
+      },
+      {
+        heading: "Where the human stays",
+        body: `The human work is deciding what good means, what risk is acceptable and when a draft is not good enough. That judgment should be designed into the flow, not left to chance.`,
+      },
+      {
+        heading: "What to change first",
+        body: `${sentenceCase(post.operatingMove)}. Do that before choosing a platform or adding another automation layer.`,
+      },
+      {
+        heading: "What I would keep",
+        body: `Keep the ${post.proofAsset}. It becomes the reference point when the team forgets why the workflow was changed in the first place.`,
+      },
+    ],
+    [
+      {
+        heading: "The boardroom version",
+        body: `The boardroom version is simple: the company is paying for repeated work because ${post.pain}. That is a margin problem before it is a technology problem.`,
+      },
+      {
+        heading: "The operating version",
+        body: `The operating version is just as direct: ${post.operatingMove}. Make the work visible enough that a non-specialist can follow the handoff.`,
+      },
+      {
+        heading: "The standard",
+        body: `A ${post.proofAsset} is the minimum standard I would want before calling this mature. Otherwise the process still lives in somebody's head.`,
+      },
+      {
+        heading: "The upside",
+        body: `${sentenceCase(post.promise)}. That upside is easier to defend than a generic claim about AI productivity.`,
+      },
+    ],
+    [
+      {
+        heading: "What the team is really asking",
+        body: `Under the surface, the team is asking for relief from a recurring drag: ${post.pain}. Naming that honestly is more useful than inventing a grand transformation theme.`,
+      },
+      {
+        heading: "The line I would draw",
+        body: `Draw a line between what AI can draft and what a person must decide. Without that line, review becomes a hidden tax.`,
+      },
+      {
+        heading: "The next useful object",
+        body: `Build the conversation around a ${post.proofAsset}. It gives everyone something more concrete than opinions about AI maturity.`,
+      },
+      {
+        heading: "The first action",
+        body: `${sentenceCase(post.operatingMove)}. Then decide whether the workflow deserves automation, documentation or simply a better owner.`,
+      },
+    ],
+  ];
+
+  return variants[index % variants.length];
 }
